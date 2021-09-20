@@ -1,5 +1,5 @@
 # PROGRAMACION COMPETITIVA
- Ciencia de la computacion -UNSA
+ Ciencia de la computacion - UNSA
  
  Docente: Mg. Alex Josué Flórez Farfán  
  
