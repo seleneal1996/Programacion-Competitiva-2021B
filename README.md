@@ -1,6 +1,8 @@
-# PROGRAMACION COMPETITIVA 
- Docente: Mg. Alex Josué Flórez Farfán  - 
+# PROGRAMACION COMPETITIVA
+ Ciencia de la computacion -UNSA
  
- Alumna: Barrios Cornejo Selene - 
+ Docente: Mg. Alex Josué Flórez Farfán  
+ 
+ Alumna: Barrios Cornejo Selene 
  
  Grupo: A
