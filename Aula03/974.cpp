@@ -1,3 +1,6 @@
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
     int subarraysDivByK(vector<int>& nums, int k) {
@@ -14,3 +17,10 @@ public:
         return result; 
     }
 };
+
+int main(){
+    vector<int> arreglo_1={4,5,0,-2,-3,1};
+    int k=5;
+    Solution S1=Solution();
+    cout<<S1.subarraysDivByK(arreglo_1,k)<<endl;
+}
