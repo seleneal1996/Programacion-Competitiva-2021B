@@ -9,9 +9,9 @@ int main(){
   int cont=0;
   cin>>m>>l;
 
-  while(n--){
+  while(m--){
     cin>>y;
-    cont=(x%k==0)?cont+1:cont;
+    cont=(y%l==0)?cont+1:cont;
   }
   cout<<cont<<"\n";
 }
