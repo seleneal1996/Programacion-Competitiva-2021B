@@ -8,13 +8,13 @@ int main(){
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
 
-  int m,l,y;
-  int cont=0;
-  cin>>m>>l;
+  int n,k,rpta=0;
+  cin>>n>>k;
 
-  while(m--){
-    cin>>y;
-    cont=(y%l==0)?cont+1:cont;
+  while(n--){
+    int temporal;
+    cin>>temporal;
+    if(temporal%k==0) rpta++;
   }
-  cout<<cont<<"\n";
+  cout<<rpta<<"\n";
 }
