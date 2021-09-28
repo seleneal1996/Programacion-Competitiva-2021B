@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include<bits/stdc++.h> //libreria STL
 using namespace std;
 
 int findTriplet(vector<int>& arr, int x)
@@ -19,12 +20,13 @@ int findTriplet(vector<int>& arr, int x)
 	return Sum;
 }
 
-// Driver code
 int main()
 {
+   //Leer entrada y salida de forma rapida
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
 	vector<int> arr = { -1, 2, 1, -4 };
 	int x = 1;
 	cout << findTriplet(arr, x);
-
 	return 0;
 }
