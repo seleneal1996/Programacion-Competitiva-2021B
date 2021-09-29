@@ -24,7 +24,7 @@ int main()
    //Leer entrada y salida de forma rapida
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
-	int result = MinSizeSubArraySum::findMinSubArray(7, vector<int>{2,3,4,1,5});
+  int result = MinSizeSubArraySum::findMinSubArray(7, vector<int>{2,3,4,1,5});
   cout << result << endl;
-	return 0;
+  return 0;
 }
