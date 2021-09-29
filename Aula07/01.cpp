@@ -1,7 +1,11 @@
 #include <iostream>
 #include<bits/stdc++.h> //libreria STL
 using namespace std;
-
+void solution(){
+  re(N,X);
+  vi a(N); re(a);
+  
+}
 
 int main()
 {
