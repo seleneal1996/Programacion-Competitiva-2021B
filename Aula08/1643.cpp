@@ -27,5 +27,5 @@ int main()
     b=max(b,p); //obtener max
   }
   cout<<b;// imprimir el mejor valor
-	return 0;
+  return 0;
 }
