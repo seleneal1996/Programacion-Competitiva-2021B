@@ -16,14 +16,16 @@ int main()
   long long p= 0;
   for(int i=0;i<n;i++)
   {
-    if(p+valor[i>=valor[i]]){
-      p+=valor[i];
+    //verificando si para valor de la matrix es mejor 
+    //llevar la variable p que estar solo
+    if(p+valor[i]>=valor[i]){
+      p+=valor[i]; //mantenemos el p y se le agrega el valor real
     }
     else{
-      p=valor[i];
+      p=valor[i]; //actualizar
     }
-    b=max(b,p);
+    b=max(b,p); //obtener max
   }
-  cout<<b;
+  cout<<b;// imprimir el mejor valor
 	return 0;
 }
