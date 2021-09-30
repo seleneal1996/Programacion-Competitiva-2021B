@@ -8,7 +8,8 @@ int main()
   ios_base::sync_with_stdio(false);
   cin.tie(NULL);
   //Declaramos longitud de matrix
-	int n;
+  int n;
+  cin>>n;
   //declaramos la matrx valor
   vector<long long > valor(n);
   // el long long para evitar problema de desbordamiento
