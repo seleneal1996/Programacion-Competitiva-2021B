@@ -17,7 +17,7 @@ int main()
     xsum+=A[c];
     pre[c]=xsum;
   }
-	while(k--){
+  while(k--){
     int left,right;
     cin>>left>>right;
     if(left==1){
@@ -27,5 +27,5 @@ int main()
       cout<<pre[right]- pre[left-1]<<endl;
     }
   }
-	return 0;
+  return 0;
 }
