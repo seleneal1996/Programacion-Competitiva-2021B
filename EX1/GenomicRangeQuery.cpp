@@ -14,15 +14,14 @@ std::vector<int> solution(std::string &S, std::vector<int> &P, std::vector<int> 
     int c[3][n+1];
 
     int ax=0,cx=0,gx=0;
-    for(int i=0;i<n+1;i++){
-        std::string vc= S.substr(i,i+1);
-        if(vc.find("A")){
+    for(int i=0;i<n;i++){
+        if(S[i]=='A'){
             ax=ax+1;
         }
-        else if(vc.find("C")){
+        else if(S[i]=='C'){
             cx=cx+1;
         }
-        else if(vc.find("G")){
+        else if(S[i]=='G'){
             gx=gx+1;
         }
         c[0][i+1]=ax;
@@ -49,5 +48,5 @@ std::vector<int> solution(std::string &S, std::vector<int> &P, std::vector<int> 
 }
 
 int main(){
-
+ 
 }
