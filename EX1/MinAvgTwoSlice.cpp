@@ -4,7 +4,6 @@
 // you can write to stdout for debugging purposes, e.g.
 // cout << "this is a debug message" << endl;
 #include <bits/stdc++.h>
-
 int solution(vector<int> &A) {
     int n=A.size();
     int indexMin2 =-1;
@@ -48,6 +47,8 @@ int solution(vector<int> &A) {
 
 int main(){
 
-  vector<int> A{4,2,2,5,1,5,8};
-  solution(A);
+  std::vector<int> A{4,2,2,5,1,5,8};
+  //test case 
+  //vector<int> A{10,11,-20,5};
+  std::cout<<solution(A);
 }
