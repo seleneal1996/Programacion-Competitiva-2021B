@@ -4,7 +4,7 @@
 // you can write to stdout for debugging purposes, e.g.
 // cout << "this is a debug message" << endl;
 #include <bits/stdc++.h>
-int solution(vector<int> &A) {
+int solution(std::vector<int> &A) {
     int n=A.size();
     int indexMin2 =-1;
     double minSum2=  INT_MAX;
@@ -42,7 +42,7 @@ int solution(vector<int> &A) {
     if(avg3<avg2){
         return indexMin3;
     }
-    min(indexMin2,indexMin3);
+    fmin(indexMin2,indexMin3);
 }
 
 int main(){
