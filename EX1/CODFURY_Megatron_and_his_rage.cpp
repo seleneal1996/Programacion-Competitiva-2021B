@@ -8,13 +8,13 @@ int main()
     int l, T, ini;
     ll sumx, min_sumx, state, mx_state;
     ll P, M;
-    std::cin>>T;
-
+    scanf("%d", &T);
     while(T--)
     {
         std::cin>>P>>M;
-        for(int i=1; i<=P; i++)
+        for(int i=1; i<=P; i++){
           std::cin>>B[i];
+        } 
         min_sumx = 50000;
         ini = 1;
         mx_state = 0;
