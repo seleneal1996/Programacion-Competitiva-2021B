@@ -19,7 +19,7 @@ int query(int v, int tl, int tr, int l, int r) {
         return tree[v];
     push(v);
     int tm = (tl + tr) / 2;
-    return max(query(v*2, tl, tm, l, min(r, tm)), 
+    return min(query(v*2, tl, tm, l, min(r, tm)), 
                query(v*2+1, tm+1, tr, max(l, tm+1), r));
 }
 int main()
