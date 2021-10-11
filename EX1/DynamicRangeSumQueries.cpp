@@ -19,12 +19,12 @@ abb consultas(int ssx) {
 }
 
 int main() {
-	std::cin >> n >> q;
-	for(int ix=1; ix<=n; ix++){
-		std::cin >> x[ix];
+  std::cin >> n >> q;
+  for(int ix=1; ix<=n; ix++){
+    std::cin >> x[ix];
 		actualizar(ix, x[ix]);
 	}
-	for(int i=1; i<=q; i++){
+  for(int i=1; i<=q; i++){
 		int t,a,b; 
     std::cin >> t >> a >> b;
     if (t==1) {
