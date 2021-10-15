@@ -8,58 +8,48 @@ std::vector<int> solution(std::string &S,std::vector<int> &P, std::vector<int> &
     // write your code in C++14 (g++ 6.2.0)
     int n=S.length();
     int m=P.size();
-    //int psize=P.size();
-    int stIndex;
-    int enIndex;
-    int subx;
-    int c[n][4];
-
-    //int ax=1,cx=1,gx=1,tx=1;
-    for(int i=0;i<n;i++){
-        S.at(i);
-        if(S.at(i)=='A'){
-            c[i][0]=1;
-        }
-        else if(S.at(i)=='C'){
-            c[i][1]=1;
-        }
-        else if(S.at(i)=='G'){
-            c[i][2]=1;
-        }
-        else if(S.at(i)=='T'){
-            c[i][3]=1;
-        }
-    }
-    std::vector<int>re(m);
-    //int rsize= re.size();
-    for (int i=1;i<n;i++){
-        //stIndex=P[i];
-        //enIndex=Q[i]+1;
-        //int resultado=4;
-        for(int j=0;j<4;j++)
+    std::vector<int>resultado(m);
+    int c[4][n];
+    int prefixSum[4][n+1];
+    for (int i = 0; i <n; i++) 
+    {
+        char ch = S.at(i);
+        switch(ch)
         {
-            c[i][j]+=c[i-1][j];
-            /*if(c[j][stIndex]!=c[j][enIndex])
+            case 'A':
+                c[0][i]++;
+                break;
+            case 'C':
+                c[1][i]++;
+                break;
+            case 'G':
+                c[2][i]++;
+                break;
+            case 'T':
+                c[3][i]++;
+                break;
+        }
+    }
+    for (int k = 1; k < n + 1; k++) 
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            prefixSum[j][k] = prefixSum[j][k-1] + c[j][k-1];
+        }
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        int x = P[i];
+        int y = Q[i];
+        for (int j = 0; j < 4; j++)
+        {
+            if (prefixSum[j][y + 1] - prefixSum[j][x] > 0)
             {
-                resultado=j+1;
-                break;
-            }*/
-        }
-        //re[i]=resultado;  
-    }
-    for(int i=0;i<m;i++){
-        stIndex=P[i];
-        enIndex=Q[i];
-        for(int j=0;j<4;j++){
-            subx=0;
-            if((stIndex-1)>=0){
-                subx=c[stIndex-1][j];
-            }
-            if(c[enIndex][j]-subx>0){
-                re[i]=j+1;
+                resultado[i] = j + 1;
                 break;
             }
         }
     }
-    return re;
+    return resultado;
 }
