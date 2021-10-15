@@ -3,52 +3,35 @@
 
 // you can write to stdout for debugging purposes, e.g.
 // cout << "this is a debug message" << endl;
-#include <bits/stdc++.h>
-int solution(std::vector<int> &A) {
-    int n=A.size();
-    int indexMin2 =-1;
-    double minSum2=  INT_MAX;
-    int indexMin3=-1;
-    double  minSum3=INT_MAX;
 
-    for (int i=0;i<n-1;i++){
-        int va1=A[i];
-        int va2=A[i+1];
-        int sum2=va1+va2;
-        if(sum2<minSum2){
-            minSum2=sum2;
-            indexMin2=i;
+int solution(std::vector<int> &A){
+    int n = A.size();
+    int izq_index, min_izq_index;
+    double AVG, min_avg, avgo2, avg_prev;
+    vector<int> prefx_Sum(n+1, 0);
+    
+    for (int i = 1; i <= n; i++) {
+        prefx_Sum[i] = A[i-1] + prefx_Sum[i-1];
+    }
+    izq_index = min_izq_index = 0;
+    AVG = min_avg = (A[0] + A[1]) / 2.0;
+    
+    for (int i = 2; i < n; i ++) {
+        int v1=i - izq_index + 1;
+        avg_prev = ((double) prefx_Sum[i + 1] - prefx_Sum[izq_index]) / (v1);
+        avgo2 = (A[i - 1] + A[i]) / 2.0;
+        if (avgo2 < avg_prev) {
+            AVG = avgo2;
+            izq_index = i - 1;
         }
-        if(i<n-2){
-            va1=A[i];
-            va2=A[i+1];
-            int va3=A[i+2];
-            int sum3=va1+va2+va3;
-            if(sum3<minSum3){
-                minSum3=sum3;
-                indexMin3=i;
-            }
+        else{
+            AVG = avg_prev;
+        }    
+        if (AVG < min_avg) {
+            min_avg = AVG;
+            min_izq_index = izq_index;
         }
     }
-
-    if(indexMin3== -1){
-        return indexMin2;
-    }
-    double avg2 = minSum2 /2;
-    double avg3 = minSum3 /3;
-    if(avg2<avg3){
-        return indexMin2;
-    }
-    if(avg3<avg2){
-        return indexMin3;
-    }
-    fmin(indexMin2,indexMin3);
-}
-
-int main(){
-
-  std::vector<int> A{4,2,2,5,1,5,8};
-  //test case 
-  //vector<int> A{10,11,-20,5};
-  std::cout<<solution(A);
+        
+    return min_izq_index;
 }
