@@ -1,7 +1,7 @@
 /*INPUT FORMAT:
 
 * Line 1: Two space-separated integers, N K.
-
+b
 * Lines 2..1+K: Each line contains one of FJ's instructions in the
         form of two space-separated integers A B (1 <= A <= B <= N).*/
 
