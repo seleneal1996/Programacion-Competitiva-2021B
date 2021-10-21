@@ -1,47 +1,35 @@
 #include <iostream>
 #include <bits/stdc++.h>
-int main()
-{
-	std::ios::sync_with_stdio(false);
+int main(){
+  std::ios::sync_with_stdio(false);
 	std::cin.tie(NULL);
 	std::cout.tie(0);
-	long long n;
-	long long cont = 0;
-	std::stack<long long> A;
-  int sizeA=A.size();
-	std::stack<long long> auxA;
-  int axA= auxA.size();
-	long long check;
-	long long found = 0;
-	std::cin >> n;
-	std::vector<long long> Sock(2*n);
-	for (int i = 0; i < 2*n; i++){
-		std::cin >> Sock[i];
-	}
-
-	for (int i = 0; i < 2 * n; i++){
-		A.push(Sock[i]);
-	}
-
-	while (sizeA > 0){
-		if (axA && A.top() == auxA.top()){
-			
-			A.pop();
-			auxA.pop();
-			found++;
-		}
-		else{
-			auxA.push(A.top());
-			A.pop();
-		}
-		cont++;
-	}
-
-	if (found == n){
-		std::cout << cont << "\n";
-	}
-	else{
-		std::cout << "impossible\n";
-	}
-	return 0;
+  int n;
+  int cont = 0;
+  std::cin >> n;
+  std::vector<int> socks(2*n), tmp;
+  for(auto& i : socks){
+    std::cin >> i;
+  }
+  while(!socks.empty()){
+    cont++;
+    if(tmp.empty()){
+      tmp.push_back(socks.back());
+      socks.pop_back();
+      continue;
+    }
+    if(socks.back() == tmp.back()){
+      socks.pop_back();
+      tmp.pop_back();
+      continue;
+    }
+    tmp.push_back(socks.back());
+    socks.pop_back();
+  }
+  if(tmp.empty()){
+    std::cout << cont<<'\n';
+  }else {
+    std::cout << "impossible"<<'\n';
+  }
+  return 0;
 }
