@@ -31,6 +31,8 @@ void Solution(std::string cadena){
 int main(){
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(NULL);
+  //CASO DE PRUEBA abc$d@ef$@g$
+  //output:: abcDEFg
   std::string cadena;
   std::cin>>cadena;
   Solution(cadena);
