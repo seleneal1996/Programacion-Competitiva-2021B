@@ -2,7 +2,7 @@
 void solution(std::deque<int> &A, std::deque<int> &B)
 {
 	int n=A.size(),m=B.size();
-  int diff =n-m;
+	int diff =n-m;
 	int val;
 	if (diff < 0) {
 		double d = (double)diff / -2;
