@@ -3,10 +3,9 @@
 class Solution {
 public:
 	int dfs(int x, int y, std::vector<std::vector<int>>& tmp){
-    int m=tmp.size();
-    int n=tmp[0].size();
-		if( x<0 || (x>=m) || (y<0) || (y>=n))
-    {
+		int m=tmp.size();
+		int n=tmp[0].size();
+		if( x<0 || (x>=m) || (y<0) || (y>=n)){
 			return 0;
 		}   
 		if(tmp[x][y] == 1){
@@ -16,17 +15,14 @@ public:
 		return 0;
 	}
 
-	int maxAreaOfIsland(std::vector<std::vector<int>>& grid)
-  {
+	int maxAreaOfIsland(std::vector<std::vector<int>>& grid){
 		int m=grid.size();
-    int n=grid[0].size();
-    int ans = 0;
-		for(int i=0; i<m; i++)
-    {
-			for(int j=0; j<n; j++)
-      {
+		int n=grid[0].size();
+		int ans = 0;
+		for(int i=0; i<m; i++){
+			for(int j=0; j<n; j++){
 				 if(grid[i][j]==1)
-					ans = std::max(ans, dfs(i, j, grid));
+					 ans = std::max(ans, dfs(i, j, grid));
 			}
 		}
 		return ans;
