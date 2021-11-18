@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 class Solution {
 public:
     int climbStairs(int n) {
@@ -19,6 +20,12 @@ int main(){
   std::cin.tie(NULL);
   Solution S1= Solution();
   //caso de prueba
-  S1.climbStairs(2);
+  /*Por ejemplo si n = 2
+  Salida: 2
+  Es decir, hay tres formas de subir a la cima.
+  1. 1 paso + 1 paso + 1 paso
+  2. 1 paso + 2 pasos
+  3. 2 pasos + 1 paso*/
+  std::cout<<S1.climbStairs(2);
   return 0;
 }
