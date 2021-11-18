@@ -13,6 +13,7 @@ int main(){
   std::cin.tie(NULL);
   Solution S1= Solution();
   //caso de prueba [10,15,20]
+  //salida:15
   std::vector<int>cost={10,15,20};
   std::cout<<S1.minCostClimbingStairs(cost);
   return 0;
