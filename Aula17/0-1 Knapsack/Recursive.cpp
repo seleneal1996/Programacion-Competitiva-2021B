@@ -17,6 +17,7 @@ int main(){
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(NULL);
   Solution S1= Solution();
+  //caso de prueba
   std::vector<int>val ={60, 100, 120};
   std::vector<int>wt={10, 20, 30};
   int W = 50;
