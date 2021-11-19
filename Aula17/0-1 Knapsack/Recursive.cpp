@@ -12,7 +12,6 @@ class Solution {
     else
       return fmax(val[n - 1]+ knapSack(W - wt[n - 1],wt, val, n - 1), knapSack(W, wt, val, n - 1));
   }
-
 };
 int main(){
   std::ios_base::sync_with_stdio(false);
@@ -26,7 +25,3 @@ int main(){
   std::cout << S1.knapSack(W, wt, val, n);
   return 0;
 }
-
-	
-
-
