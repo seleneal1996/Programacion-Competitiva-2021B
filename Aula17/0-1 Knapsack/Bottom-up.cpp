@@ -31,10 +31,10 @@ int main(){
   Solution S1= Solution();
   //caso de prueba
   std::vector<int>val={60,100,120};
-	std::vector<int>wt={10,20,30};
+  std::vector<int>wt={10,20,30};
   //salida:220
-	int W = 50;
-	int n = sizeof(val) / sizeof(val[0]);
-	std::cout << S1.knapSack(W, wt, val, n);
+  int W = 50;
+  int n = sizeof(val) / sizeof(val[0]);
+  std::cout << S1.knapSack(W, wt, val, n);
   return 0;
 }
