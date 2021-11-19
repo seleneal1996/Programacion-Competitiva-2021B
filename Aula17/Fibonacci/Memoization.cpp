@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 class Solution {
   public:
-  long fib_memo(int n, vector<long>& memo)
+  long fib(int n, vector<long>& memo)
   {
     if(memo[n]) return memo[n];
     long result{};
@@ -12,6 +12,12 @@ class Solution {
     memo[n] = result;
     return result;
   }
+  
+  long fib_memoization(int n)
+  {
+    vector<long> memo(n+1);
+    return fib(n, memo);
+  }
 };
 int main(){
   std::ios_base::sync_with_stdio(false);
@@ -19,6 +25,6 @@ int main(){
   Solution S1= Solution();
   //CASO DE PRUEBA:1O
   //SALIDA:55
-  std::cout<<S1.fib_memo(10);
+  std::cout<<S1.fib_memoization(10);
   return 0;
 }
