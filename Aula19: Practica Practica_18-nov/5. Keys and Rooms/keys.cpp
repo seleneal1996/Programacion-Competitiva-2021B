@@ -5,7 +5,6 @@ public:
     std::unordered_set<int>visited; 
     int n=visited.size();
     void dfs(int room,std::vector<std::vector<int>>& rooms){
-        
         if(visited.count(room))
             return;
         visited.insert(room);      
