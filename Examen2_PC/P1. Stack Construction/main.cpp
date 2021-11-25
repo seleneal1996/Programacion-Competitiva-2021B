@@ -42,11 +42,10 @@ public:
       for (long long l = r; l >= 0; --l)
       {
         dp[l][r] = 3LL * (r - l + 1LL);
-        // Solve_Storing [l, r]
         for (long long m = l; m < r; ++m)
         Solve_Storing(dp[l][r], dp[l][m], dp[m+1][r]);
         if (S[l] == S[r]) 
-        { // Consider storing S[l]
+        { 
           std::vector<long long> &p = pos[mfind(id, S[l])];
           long long li = mpos[l], ri = mpos[r];
           std::vector<long long> tdp(ri - li + 1,Maxi);
@@ -83,7 +82,6 @@ int main(){
     S1.StackConstruction();
   }
   return 0;
-
   
   //Entrada:
   /*4 
