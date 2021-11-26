@@ -1,6 +1,5 @@
 //https://cses.fi/problemset/task/1683/
 #include <bits/stdc++.h>
-#define vi std::vector<int>
 class P7{
   public:
   std::vector<bool> visit;
