@@ -1,84 +1,96 @@
 //https://open.kattis.com/problems/dungeon
-
 #include <bits/stdc++.h>
-int L,R,C;
-char s[31][31][31];
-int look_in_on[31][31][31];
-int sx,sy,sz;
-bool banner;
-int footstep[6][3]={{0,0,-1},{0,0,1},{1,0,0},{-1,0,0},{0,1,0},{0,-1,0}};
-class Points{
-  public:
-  struct my_point{
-    int x,y,z;
-    int conti;
-  }f,g;
-};
-class Dungeon:public Points{
-  public:
-  void bfs()
-  {
-    std::queue<my_point>q;
-    while(!q.empty())
-      q.pop();
-      memset(look_in_on,0,sizeof(look_in_on));
-      f.x=sx;
-      f.y=sy;
-      f.z=sz;
-      f.conti=0;
-      look_in_on[f.x][f.y][f.z]=1;
-      q.push(f);
-      while(!q.empty())
-      {
-        f=q.front();
-        q.pop();
-        if(s[f.x][f.y][f.z]=='E')
-        {
-          std::cout<<"Escaped in "<<f.conti<<" minute(s)."<<"\n";
-          banner=true;
-        }
-        
-        for(int i=0;i<6;i++)
-        {
-          g.x=f.x+footstep[i][0];
-          g.y=f.y+footstep[i][1];
-          g.z=f.z+footstep[i][2];
-          if(g.x>=0&&g.x<L&&g.y>=0&&g.y<R&&g.z>=0&&g.y<C)
-          {
-            if(!look_in_on[g.x][g.y][g.z]&&s[g.x][g.y][g.z]!='#')
-            {
-              g.conti=f.conti+1;
-              look_in_on[g.x][g.y][g.z]=1;
-              q.push(g);
-            }
-          }
-        }
-      }
-  }
-};
-
+using namespace std;
+int x, y, z;
+bool inrange(int a, int b, int c)
+{
+    return (a >= 0 && b >= 0 && b >= 0 && a < x && b < y && c < z);
+}
 int main()
 {
-  std::ios_base::sync_with_stdio(false);
-  std::cin.tie(0);
-  Dungeon S1= Dungeon();
-  while(std::cin>>L>>R>>C&&L&&R&&C)
-  {
-    for(int i=0;i<L;i++)
-    for(int j=0;j<R;j++)
-    for(int k=0;k<C;k++)
-    {
-      std::cin>>s[i][j][k];
-      if(s[i][j][k]=='S'){
-        sx=i,sy=j,sz=k;
-      }
-    }
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    while(cin >> x >> y >> z) {
+        tuple<int,int,int> s;
+        tuple<int,int,int> e;
 
-    banner=false;
-    S1.bfs();
-    if(!banner){
-      std::cout<<"Trapped!"<<"\n";
+        if(x == 0 || y == 0 || z == 0) {
+            break;
+        }
+
+        vector<vector<vector<int>>> v(x);
+        for(auto& i : v) {
+            i.resize(y, vector<int>(z, -2));
+        }
+
+        for(int i = 0; i < x; i++)
+        {
+            for(int j = 0; j < y; j++)
+            {
+                for(int k = 0; k < z; k++)
+                {
+                    char c;
+                    cin >> c;
+                    if(c == '#') {
+                        v[i][j][k] = -1;
+                    }
+                    if(c == 'S') {
+                        get<0>(s) = i;
+                        get<1>(s) = j;
+                        get<2>(s) = k;
+                    }
+                    if(c == 'E') {
+                        get<0>(e) = i;
+                        get<1>(e) = j;
+                        get<2>(e) = k;
+                    }
+                }
+            }
+        }
+
+        // BFS
+        queue<tuple<int,int,int>> q;
+        q.push(s);
+        v[get<0>(s)][get<1>(s)][get<2>(s)] = 0;
+
+        while(!q.empty()) {
+            auto c = q.front();
+            q.pop();
+            int x = get<0>(c);
+            int y = get<1>(c);
+            int z = get<2>(c);
+            if(inrange(x-1,y,z) && v[x-1][y][z] == -2) {
+                v[ x-1][ y][ z] = v[ x][ y][ z] + 1;
+                q.push({ x-1, y, z});
+            }
+            if(inrange( x+1, y, z) && v[ x+1][ y][ z] == -2) {
+                v[ x+1][ y][ z] = v[ x][ y][ z] + 1;
+                q.push({ x+1, y, z});
+            }
+            if(inrange( x, y-1, z) && v[ x][ y-1][ z] == -2) {
+                v[ x][ y-1][ z] = v[ x][ y][ z] + 1;
+                q.push({ x, y-1, z});
+            }
+            if(inrange( x, y+1, z) && v[ x][ y+1][ z] == -2) {
+                v[ x][ y+1][ z] = v[ x][ y][ z] + 1;
+                q.push({ x, y+1, z});
+            }
+            if(inrange( x, y, z-1) && v[ x][ y][ z-1] == -2) {
+                v[ x][ y][ z-1] = v[ x][ y][ z] + 1;
+                q.push({ x, y, z-1});
+            }
+            if(inrange( x, y, z+1) && v[ x][ y][ z+1] == -2) {
+                v[ x][ y][ z+1] = v[ x][ y][ z] + 1;
+                q.push({ x, y, z+1});
+            }
+        }
+
+        if(v[get<0>(e)][get<1>(e)][get<2>(e)] < 0) {
+            cout << "Trapped!" << endl;
+        }
+        else {
+            cout << "Escaped in " << v[get<0>(e)][get<1>(e)][get<2>(e)]  << " minute(s)." << endl;
+        }
     }
-  }
-  return 0;
-}   
+}
