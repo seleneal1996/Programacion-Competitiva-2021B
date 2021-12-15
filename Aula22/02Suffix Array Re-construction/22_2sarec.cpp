@@ -1,8 +1,5 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-
+//https://open.kattis.com/problems/suffixarrayreconstruction
+#include <bits/stdc++.h>
 struct Suffix {
     int position;
     std::string suffix;
@@ -62,6 +59,8 @@ std::string solve(int length, std::vector<Suffix>& suffixes) {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
     int test_count;
     std::cin >> test_count;
 
