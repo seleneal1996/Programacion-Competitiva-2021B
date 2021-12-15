@@ -1,20 +1,6 @@
-#include <stdio.h>
-#include <string>
-#include <math.h>
-#include <iostream>
-#include <sstream>
-#include <float.h>
-#include <cmath>
-#include <vector>
-#include <set>
-#include <map>
-#include <unordered_map>
-#include <algorithm>
-#include <cctype>
-#include <clocale>
-
+//https://open.kattis.com/problems/stringmatching
+#include <bits/stdc++.h>
 using namespace std;
-
 vector<int> kmp_pre(string substring)
 {
     vector<int> table(substring.size() + 1, -1);
