@@ -1,8 +1,5 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <algorithm>
-#include <stack>
+//https://open.kattis.com/problems/dvaput
+#include <bits/stdc++.h>
 using namespace std;
 
 typedef vector<int> vi;
@@ -69,8 +66,6 @@ int main() {
 	for (int i = 0; i < L - 1; ++i) {
 		M = max(M, sa.lcp(inv[i], inv[i + 1]));
 	}
-
 	cout << M << endl;
-	
 	return 0;
 }
