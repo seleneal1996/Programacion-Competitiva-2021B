@@ -24,8 +24,8 @@ int main(){
         }
      }
     if(numbers[n-1])
-      std::cout << "Stan wins" << endl;
+      std::cout << "Stan wins" << std::endl;
     else
-      std::cout << "Ollie wins" << endl;
+      std::cout << "Ollie wins" << std::endl;
     return 0;
 }
