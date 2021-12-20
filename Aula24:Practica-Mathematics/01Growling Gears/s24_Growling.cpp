@@ -11,12 +11,11 @@ void Calculate(){
     std::cin>>a>>b>>c;
     int rpm = b / (2 * a);
     int torque = -a*rpm*rpm + b*rpm + c;
-    if (torque > mxTorque+1e-6)
-		{
-			mx_gear = gear;
-			mxRPM = rpm;
-			mxTorque = torque;
-		}
+    if (torque > mxTorque+1e-6){
+	    mx_gear = gear;
+	    mxRPM = rpm;
+	    mxTorque = torque;
+    }
   }
   int rounded_max_rpm = mxRPM+ .5;
   std::cout<<mx_gear<<std::endl;
