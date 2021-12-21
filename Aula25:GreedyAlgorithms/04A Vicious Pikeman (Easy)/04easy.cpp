@@ -24,7 +24,7 @@ int main() {
   t_p = 0;
   for (i = 0; i < n; i++) {
     if (t_p + ti[i] <= t) {
-      p = (p + ti[i] + t_p) % 1000000007;
+      p = (p + ti[i] + t_p) % 1e9;
       t_p += ti[i];
       s++;
     } else {
