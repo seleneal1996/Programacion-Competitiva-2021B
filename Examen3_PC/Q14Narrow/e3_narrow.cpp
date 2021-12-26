@@ -1,38 +1,37 @@
 //https://open.kattis.com/problems/narrowartgallery
 #include <bits/stdc++.h>
 long long inf = (long long)1 << 60;
-
-struct state {
-    long long needed;
-    long long spot;
+struct condicion {
+    long long necesaria;
+    long long lugar;
     bool prevl;
     bool prevr;
 };
 
-bool operator<(const state& s1, const state& s2) {
-    return std::tie(s1.needed, s1.spot, s1.prevl, s1.prevr) <
-           std::tie(s2.needed, s2.spot, s2.prevl, s2.prevr);
+bool operator<(const condicion& s1, const condicion& s2) {
+    return std::tie(s1.necesaria, s1.lugar, s1.prevl, s1.prevr) <
+           std::tie(s2.necesaria, s2.lugar, s2.prevl, s2.prevr);
 }
 
-bool operator==(const state& s1, const state& s2) {
-    return std::tie(s1.needed, s1.spot, s1.prevl, s1.prevr) ==
-           std::tie(s2.needed, s2.spot, s2.prevl, s2.prevr);
+bool operator==(const condicion& s1, const condicion& s2) {
+    return std::tie(s1.necesaria, s1.lugar, s1.prevl, s1.prevr) ==
+           std::tie(s2.necesaria, s2.lugar, s2.prevl, s2.prevr);
 }
 
-std::map<state, long long> memo;
+std::map<condicion, long long> memo;
 
-long long solve(std::vector<std::pair<long long,long long>>& v, int n, state s) {
+long long solve(std::vector<std::pair<long long,long long>>& v, int n, condicion s) {
     if(memo.count(s) > 0) {
         return memo[s];
     }
 
-    long long needed = s.needed;
-    long long spot = s.spot;
+    long long necesaria = s.necesaria;
+    long long lugar = s.lugar;
     bool prevl = s.prevl;
     bool prevr = s.prevr;
 
-    if(spot >= n) {
-        if(needed <= 0) {
+    if(lugar >= n) {
+        if(necesaria <= 0) {
             return 0;
         }
         else {
@@ -40,43 +39,43 @@ long long solve(std::vector<std::pair<long long,long long>>& v, int n, state s) 
         }
     }
 
-    long long lval = v[spot].first;
-    long long rval = v[spot].second;
+    long long lval = v[lugar].first;
+    long long rval = v[lugar].second;
 
     long long ans = -inf;
 
-    if(needed <= 0) {
-        state next = {needed, spot+1, true, true};
+    if(necesaria <= 0) {
+        condicion next = {necesaria, lugar+1, true, true};
         ans = lval + rval + solve(v, n, next);
         memo[s] = ans;
         return ans;
     }
 
     if(prevl) {
-        state next = {needed-1, spot+1, true, false};
+        condicion next = {necesaria-1, lugar+1, true, false};
         ans = fmax(ans, lval + solve(v, n, next));
     }
 
     if(prevr) {
-        state next = {needed-1, spot+1, false, true};
+        condicion next = {necesaria-1, lugar+1, false, true};
         ans = fmax(ans, rval + solve(v, n, next));
     }
 
-    state next = {needed, spot+1, true, true};
+    condicion next = {necesaria, lugar+1, true, true};
     ans = fmax(ans, lval + rval + solve(v, n, next));
 
     memo[s] = ans;
     return ans;
 }
 
-void docase(int n, int m) {
+void hacer_caso(int n, int m) {
   std::vector<std::pair<long long,long long>> v(n);
   for(auto& i : v) {
     std::cin >> i.first >> i.second;
   }
 
   memo.clear();
-  state s = {m, 0, true, true};
+  condicion s = {m, 0, true, true};
   long long ans = solve(v, n, s);
   std::cout << ans << std::endl;
 }
@@ -89,6 +88,6 @@ int main() {
     if(n == 0 && m == 0) {
       break;
     }
-    docase(n, m);
+    hacer_caso(n, m);
   }
 }    
